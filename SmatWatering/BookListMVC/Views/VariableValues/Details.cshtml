@@ -1,0 +1,75 @@
+﻿@model IEnumerable<VariableValueView>
+
+@{ ViewData["Title"] = "Details"; }
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 text-info">Variable Values</h1>
+
+   
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VariableName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Value)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PIN)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ChipId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreatedDate)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a> @Html.DisplayFor(modelItem => item.VariableName)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Value)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PIN)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ChipId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                                </td>
+                                <td>
+                                    <a onclick='Delete("/VariableValues/Delete/@item.VariableValueId" ,false)'><i style="margin-left : 5px" class="text-danger fas fa-trash fa-lg"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script src="~/js/toatr.js"></script>
+    <script src="~/js/demo/datatables-demo.js"></script>
+}
